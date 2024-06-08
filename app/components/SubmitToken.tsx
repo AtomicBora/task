@@ -1,3 +1,5 @@
+import { submitToken } from '../actions';
+
 export interface ISumbmitTokenProps {
 	title: string;
 	content: string;
@@ -22,25 +24,16 @@ export function SumbmitToken({
 				</p>
 			</div>
 			<div className="bg-white py-4 px-[11px] rounded-[9.14px] absolute -bottom-[30px] right-[10px] left-[10px]">
-				<form>
+				<form action={submitToken}>
 					<div className="bg-gray rounded-[28.34px] flex flex-row items-center justify-between py-[2px] pr-[2px]">
-						{/* <form
-						action={(formData) => {
-							'use server';
-							console.log(formData.get('token'));
-						}}
-					> */}
 						<input
 							type="text"
 							name="token"
 							required
 							placeholder={placeholder}
-                            className="flex-grow-1 bg-gray rounded-s-[28.34px] pl-4 outline-none text-[13px] font-normal"
+							className="w-full flex-grow-1 bg-gray rounded-s-[28.34px] pl-4 outline-none text-[13px] font-normal"
 						/>
-						<button
-							type="submit"
-							className="bg-orange-primary text-white font-medium text-[13px] p-[9.14px] rounded-[28.34px]"
-						>
+						<button className="bg-orange-primary text-white font-medium text-[13px] p-[9.14px] rounded-[28.34px]">
 							{buttonText}
 						</button>
 					</div>
