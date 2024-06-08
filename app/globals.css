@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+header ul,
+footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+header ul li,
+footer ul li {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+header a:hover,
+footer a:hover {
+  color: theme(colors.orange-primary);
+}
+
+.primary-button {
+  width: 193px;
+  height: 48px;
+  border-radius: 36px;
+  padding: 16px;
+  background-color: theme('colors.orange-primary');
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1rem;
+  border-bottom: 1px solid rgba(39, 51, 64, 0.15);
+}
+
+#dropdown-active,
+.close-dropdown {
+  display: none;
+}
+
+.links-container {
+  display: none;
+}
+
+
+#dropdown-active:checked~.open-dropdown {
+  display: none;
+}
+
+#dropdown-active:checked~.close-dropdown {
+  display: block;
+}
+
+nav:has(#dropdown-active:checked) {
+  background-color: theme('backgroundColor.dark');
+
+  .close-dropdown {
+    display: block;
+  }
+
+  .links-container {
+    display: flex;
+    color: white;
+    flex-direction: column;
+  }
+
+  .navbar-logo {
+    color: white;
+  }
+}
+
+.landing-page-title span:nth-of-type(odd) {
+  font-size: 31.43px;
+  font-weight: 400;
+  font-family: theme(fontFamily.arboria);
+  line-height: 39.07px;
+  color: theme(colors.dark);
+}
+
+.landing-page-title span:nth-child(2) {
+  font-size: 26.94px;
+  line-height: 34.78px;
+  font-weight: 900;
+  font-family: theme(fontFamily.arboria);
+  color: theme(colors.orange-primary);
+}
+
+
+@media only screen and (min-width: theme('screens.large')) {
+  nav {
+    justify-content: space-around;
+    padding: 24px 130px;
+  }
+
+  .links-container,
+  .links-container ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+}
