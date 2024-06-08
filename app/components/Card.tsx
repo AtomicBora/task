@@ -1,21 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// export interface IButtonProps {
-// 	 className?: string | undefined;
-// }
-
-// export function Card({ className }: IButtonProps) {
-// 	return (
-// 		<Link
-// 			href="https://webz.io/login/signup"
-// 			className={className ||'primary-button'}
-// 		>
-// 			Get API Access Token
-// 		</Link>
-// 	);
-// }
-
 export interface ICardProps {
 	image: string;
 	alt: string;

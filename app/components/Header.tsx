@@ -11,6 +11,7 @@ export default function Header() {
 					width="100"
 					height="0"
 					className='navbar-logo'
+					priority={true}
 				/>
 				<div className="links-container">
 					<ul>

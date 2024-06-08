@@ -1,7 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import { PrimaryButton } from './components/PrimaryButton';
 import { Card } from './components/Card';
 import { SumbmitToken } from './components/SubmitToken';
+import { Modal } from './components/Modal';
+import { useState } from 'react';
+import { CandidateCard } from './components/CandidateCard';
 
 export default function Home() {
 	/* I put it like this since this might be some remote content from db or some CMS */
@@ -9,6 +14,12 @@ export default function Home() {
 		'Webz.io transforms the web into machine-ready feeds that plug right into any platform. So machines get data just the way they need it — and companies easily turn web data into customer value.';
 	const submitTokenContent =
 		'Webz.io sources and collects data from across the web and transforms it into machine-ready feeds that plug right into any platform.';
+	const trumpCardContent =
+		'Donald John Trump was born on June 14, 1946, in Queens, New York City, to Fred and Mary Anne Trump. He grew up in Queens and attended the Kew-Forest School before transferring to the New York Military Academy at the age of 13.';
+	const bidenCardContent =
+		'Joe Biden was born on June 14, 1946, in Queens, New York City, to Fred and Mary Anne Trump. He grew up in Queens and attended the Kew-Forest School before transferring to the New York Military Academy at the age of 17.';
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<>
 			<section className="flex flex-col items-center gap-[30px] small:max-large:w-full small:max-large:px-[25px] small:max-large:pb-[51px] large:pb-[83px] small:pt-[33px] bg-gray">
@@ -30,6 +41,13 @@ export default function Home() {
 					</p>
 				</div>
 				<PrimaryButton />
+				{/* this button is not in the design, it's for opening dialog */}
+				<button
+					onClick={() => setIsOpen(true)}
+					className="bg-dark text-white font-arboria font-bold text-l px-5 py-3 rounded-[36px]"
+				>
+					Choose Candidate
+				</button>
 			</section>
 			<div className="w-full flex large:gap-4 small:max-large:gap-4 small:max-large:flex-col small:max-large:px-9 large:pl-[130px] large:max-w-[50%] bg-gray">
 				<Image
@@ -38,13 +56,15 @@ export default function Home() {
 					width="1920"
 					height="1080"
 					className="small:max-large:w-full small:max-large:h-auto rounded-[10px]"
+					priority={true}
 				/>
 				<Image
 					src="/trump.png"
-					alt="Joe Biden"
+					alt="Donald Trump"
 					width="1240"
 					height="826"
 					className="small:max-large:w-full small:max-large:h-auto rounded-[10px]"
+					priority={true}
 				/>
 			</div>
 			<section className="small:max-large:py-[100px] large:py-[224px] flex flex-col items-center px-7 bg-gray">
@@ -137,6 +157,31 @@ export default function Home() {
 					buttonText="Submit"
 				/>
 			</section>
+			<Modal
+				isOpen={isOpen}
+				onClose={() => setIsOpen(false)}
+				title="Select Persona"
+			>
+				<p className="my-[33px]">
+					Pick a Candidate to View Latest News
+				</p>
+				<CandidateCard
+					image="/trump-card.webp"
+					alt="Donald Trump"
+					candidate="Donald Trump"
+					party="The Republicans"
+					content={trumpCardContent}
+					linkUrl="/candidate/trump"
+				/>
+				<CandidateCard
+					image="/biden-card.webp"
+					alt="Joe Biden"
+					candidate="Joe Biden"
+					party="The Democrats"
+					content={bidenCardContent}
+					linkUrl="/candidate/biden"
+				/>
+			</Modal>
 		</>
 	);
 }

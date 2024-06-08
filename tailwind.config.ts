@@ -20,7 +20,9 @@ const config: Config = {
 				dark: '#273340',
 				gray: '#EFEFEF',
 				'light-gray': '#F8F8F8',
-				'orange-primary': '#FC9F00'
+				'orange-primary': '#FC9F00',
+				darkslategray: '#27334026',
+				tomato: '#EE4C4C'
 			}
 		}
 	},

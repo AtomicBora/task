@@ -114,6 +114,13 @@ nav:has(#dropdown-active:checked) {
   color: theme(colors.orange-primary);
 }
 
+.positive-articles-bg {
+  background: linear-gradient(180deg, rgba(65, 215, 125, 0.09) 0%, rgba(65, 215, 125, 0) 100%);
+}
+
+.negative-articles-bg {
+  background: linear-gradient(180deg, rgba(238, 76, 76, 0.09) 0%, rgba(238, 76, 76, 0) 100%);
+}
 
 @media only screen and (min-width: theme('screens.large')) {
   nav {
